@@ -2,6 +2,14 @@ var game = {};
 var player = {};
 var creep = {};
 var upgrades = {};
+var healthPercentage = "10%";
+var setBar = document.querySelector(".bar");
+
+
+
+
+
+
 
 game.baseInterval = 1000;
 
@@ -29,6 +37,7 @@ player.currentGold = 0;
 creep.totalHealth = 10;
 creep.currentHealth = 10;
 
+
 upgrades.autoAttackBaseCost = 10;
 upgrades.autoAttackCurrentCost = 10;
 
@@ -40,7 +49,10 @@ $(document).ready(function(){
     $("#attackCreep").click(function(){
         if (creep.currentHealth >0) {
             creep.currentHealth -= player.attackDamage;
-            $("#creepHealth").text(creep.currentHealth)}
+            $("#creepHealth").text(creep.currentHealth);
+            healthPercentage = creep.currentHealth / creep.totalHealth * 100 +"%";
+            document.querySelector("#bar").style.width = healthPercentage;
+                        }
             
         if (creep.currentHealth <= 0) {
             player.creepScore ++;
@@ -70,15 +82,28 @@ function update(){
    
    creep.currentHealth += player.autoAddInterval;
    $("#creepHealth").text(creep.currentHealth);
-   $("#creepScore").text(player.creepScore)
-   $("#playerGold").text(player.currentGold)
+   $("#creepScore").text(player.creepScore);
+   $("#playerGold").text(player.currentGold);
+    healthPercentage = creep.currentHealth / creep.totalHealth * 100 +"%";
+    document.querySelector("#bar").style.width = healthPercentage;
+    
+    
+    
+           
+           console.log (healthPercentage);
+           
        if (creep.currentHealth <= 0) {
             player.creepScore ++;
             player.currentGold ++;
             creep.currentHealth = creep.totalHealth;
-            $("#creepHealth").text(creep.currentHealth)
-            $("#creepScore").text(player.creepScore)
-            $("#playerGold").text(player.currentGold)}
+            $("#creepHealth").text(creep.currentHealth);
+            $("#creepScore").text(player.creepScore);
+            $("#playerGold").text(player.currentGold);
+            
+           
+           
+           
+       }
     
    
 }
