@@ -1,13 +1,91 @@
 html {
     height: 100%;
-    background : linear-gradient(35deg,aqua,blue);
     font-family : Lato;
+    text-align : center;
 }
+
+
+body {
+    background: url("assets/img/transparent PNG/full-background.png") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0; padding: 0; position: absolute; top: 0; bottom: 16px; left: 0; right: 0;
+    display : grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    
+}
+
+
+.boxed {
+    border: 2px solid aqua;
+    border-radius: 25px;
+    padding-bottom: 30px;
+    background-color: rgba(214, 228, 249, .8);
+    opacity: 50%;
+    align-self: center;
+   
+}
+
+
+.sprite {
+    width: 10em;
+    height: auto;
+    align-self: center;
+    
+    padding-top: 3em;
+}
+
+
+
+
+.title {
+    grid-column: 2 / span 3;
+  
+    
+}
+
+.laning {
+    grid-column: 3; 
+    grid-row: 2; 
+    align-self: center;
+    
+}
+
+
+
+.shop {
+    grid-column: 5;
+    grid-row: 3;
+    padding-top: 1em;
+    align-self:flex-end;
+        
+}
+
+
+.statistics {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.player {
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    top: 50px;
+    font-size: 18px;
+    color:#5d0c19;
+}
+
 #gameTitle {
+    text-align : center;
     font-family : Tangerine;
-    font-size : 48px;
-  color: #202c2d;
-  text-shadow:
+    font-size : 80px;
+    color: #202c2d;
+    
+    text-shadow:
     0 1px #808d93,
     -1px 0 #cdd2d5,
     -1px 2px #808d93,
@@ -23,7 +101,8 @@ html {
     -6px 7px #808d93,
     -7px 6px #cdd2d5,
     -7px 8px #808d93,
-    -8px 7px #cdd2d5; 
+    -8px 7px #cdd2d5;
+
 }
 
 .center {
@@ -39,8 +118,8 @@ html {
   box-sizing: border-box;
   width: 200px;
   height: 20px;
-  padding: 5px;
-  background: #ddd;
+  padding: 3px;
+  background: #000;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -56,7 +135,7 @@ html {
   height: 10px;
   position: relative;
   
-  transition: width .5s linear;
+  transition: width .25s linear;
 }
 
 .hit {
@@ -68,4 +147,19 @@ html {
   width: 0px;
   
   transition: width .5s linear;
+}
+
+.tooltip .tooltiptext{
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
 }

@@ -12,40 +12,36 @@
 <body>
 
 
-<h1 id="gameTitle">Defenders of the Ancient Idlers</h1>
+<h1 id="gameTitle" class="title">Defenders of the Ancient Idlers</h1>
+<sub class="center player"> Playing as <span id="playerName"> </span></sub>
 
-<sub> Playing as <span id="playerName" class="test"> </span></sub>
-
+<section class="statistics boxed">
 <h2>Current Stats</h2>
 <div>Creep Score: <span id="creepScore" class="test"></span></div>
-<div>Current Gold: <span id="playerGold" class="test"></span></div>
 
+    </section>
+ <section class="laning boxed">   
 <h2>Laning</h2>
-<div class="center">Current Creep Health: <span id="creepHealth"></span></div>
-    <br>
-    
-    
-    
-    
-    <div class="healthBar">
+<div>Current Creep Health: <span id="creepHealth"></span></div><br>
+  
+    <div class="healthBar boxed">
   <div class="bar" id="bar">
   	  <div class="hit"></div>
   </div>
-</div>
+</div>   
+     
+<div><img id="attackCreep" class="sprite" src="assets/img/Mons%202.png"> <!--<input type="button" id="attackCreep" value="Attack!">--></div>
+     
+    </section>
+<section class="shop boxed">
+<div>  
 
-    
-    
-    
-    
-<div><input type="button" id="attackCreep" value="Attack!"></div> 
-
-    
-<h2>Shop</h2>
-
-<div><input type="button" id="buyAutoAttack" value="Buy Auto Attack"><span id="buyutoAttackCount"></span></div>
-<div><input type="button" id="buySuppressingBlade" value="Buy Suppressing Blade"><span id="buySuppressingBladeCount"></span></div>
-<div><input type="button" id="buyHeavenlyCutlass" value=" Buy Heavenly Cutlass"><span id="buyHeavenlyCutlassCount"></span></div>
-
-
+    <div>Current Gold: <span id="playerGold"></span></div>
+<br>
+<div class="tooltip"><input type="button" id="buyAutoAttack" value="Buy Auto Attack"><span class="tooltiptext">Attacks Automatically</span><span id="buyAutoAttackCount"> Price: <span id="autoAttackCurrentCost"></span></span></div><br>
+<div class="tooltip"><input type="button" id="buySuppressingBlade" value="Buy Suppressing Blade"><span class="tooltiptext">Increases damage by 1</span><span id="buySuppressingBladeCount">Price: <span id="suppressingBladeCurrentCost"></span></span></div><br>
+<div class="tooltip"><input type="button" id="buyHeavenlyCutlass" value=" Buy Heavenly Cutlass"><span class="tooltiptext">Increases damage by 1%</span><span id="buyHeavenlyCutlassCount">Price: <span id="heavenlyCutlassCurrentCost"></span></span></div>
+    </div>
+    </section>
 </body>
 </html>
