@@ -18,9 +18,9 @@ player.creepScore = 0;
 player.autoAttackCount = 0;
 player.autoAddInterval = 0;
 player.currentGold = 100;
-player.attackDamagePercentage = 3;
-player.attackDamgeBase = 3;
-player.attackDamage = 1;
+player.attackDamagePercentage = 1;
+player.attackDamageBase = 1;
+player.attackDamage = player.attackDamageBase * player.attackDamagePercentage;
 
 creep.totalHealth = 10;
 creep.currentHealth = 10;
@@ -44,7 +44,7 @@ upgrades.heavenlyCutlassDamageIncrease = player.attackDamageBase*1.1;
 $(document).ready(function(){
     $("#playerName").text(player.name);
     $(".sprite").mousedown(function(){
-       $(".sprite").attr("src", "assets/img/Mons12.png"); 
+       $(".sprite").attr("src", "assets/img/Mons2sad.png"); 
     });
     
     $(".sprite").mouseup(function(){

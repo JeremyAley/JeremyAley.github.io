@@ -33,10 +33,10 @@ body {
 
 
 .sprite {
-    width: 100px;
-    height: auto;
+    width: auto;
+    height: 14rem;
     align-self: center;
-    padding-top: 3em;
+    padding-top: ;
     }
 
 
@@ -50,7 +50,7 @@ body {
 
 .laning {
     grid-column: 3; 
-    grid-row: 2; 
+    grid-row: 3; 
     align-self: center;
     
 }
