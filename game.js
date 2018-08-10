@@ -43,6 +43,13 @@ upgrades.heavenlyCutlassDamageIncrease = player.attackDamageBase*1.1;
 
 $(document).ready(function(){
     $("#playerName").text(player.name);
+    $(".sprite").mousedown(function(){
+       $(".sprite").attr("src", "assets/img/Mons12.png"); 
+    });
+    
+    $(".sprite").mouseup(function(){
+       $(".sprite").attr("src", "assets/img/Mons%202.png"); 
+    });
     
     $("#attackCreep").click(function(){
         if (creep.currentHealth >0) {
@@ -69,7 +76,7 @@ $(document).ready(function(){
         player.currentGold -= upgrades.autoAttackCurrentCost;
         upgrades.autoAttackCurrentCost *= 1.5;
         upgrades.autoAttackCount++}
-        $("#autoAttackCurrentCost").text(upgrades.autoAttackCurrentCost);
+        $("#autoAttackCurrentCost").text(upgrades.autoAttackCurrentCost.toFixed());
     });
     
     
@@ -77,8 +84,8 @@ $(document).ready(function(){
         if (player.currentGold >= upgrades.suppressingBladeCurrentCost){
             player.attackDamage += upgrades.suppressingBladeDamageIncrease;
             player.currentGold -= upgrades.suppressingBladeCurrentCost;
-            upgrades.suppressingBladeCurrentCost = Math.round(upgrades.suppressingBladeCurrentCost * 1.5);
-            $("#suppressingBladeCurrentCost").text(upgrades.autoAttackCurrentCost);
+            upgrades.suppressingBladeCurrentCost = Math.round(upgrades.suppressingBladeCurrentCost.toFixed() * 1.5);
+            $("#suppressingBladeCurrentCost").text(upgrades.autoAttackCurrentCost.toFixed());
                 
         }
     });
@@ -89,8 +96,8 @@ $(document).ready(function(){
         if (player.currentGold >= upgrades.heavenlyCutlassCurrentCost){
             player.attackDamageBase += upgrades.heavenlyCutlassDamageIncrease;
             player.currentGold -= upgrades.heavenlyCutlassCurrentCost;
-            upgrades.heavenlyCutlassCurrentCost = Math.round(upgrades.heavenlyCutlassCurrentCost * 1.5);
-            $("#heavenlyCutlassCurrentCost").text(upgrades.heavenlyCutlassCurrentCost);
+            upgrades.heavenlyCutlassCurrentCost = Math.round(upgrades.heavenlyCutlassCurrentCost.toFixed() * 1.5);
+            $("#heavenlyCutlassCurrentCost").text(upgrades.heavenlyCutlassCurrentCost.toFixed());
                 
         }
     });
@@ -107,12 +114,12 @@ function update(){
    creep.currentHealth += player.autoAddInterval;
    $("#creepHealth").text(parseFloat(Number(creep.currentHealth.toFixed(2))));
    $("#creepScore").text(player.creepScore);
-   $("#playerGold").text(player.currentGold);
+   $("#playerGold").text(player.currentGold.toFixed());
     healthPercentage = creep.currentHealth / creep.totalHealth * 100 +"%";
     document.querySelector("#bar").style.width = healthPercentage;
-    $("#autoAttackCurrentCost").text(upgrades.autoAttackCurrentCost);
-    $("#suppressingBladeCurrentCost").text(upgrades.suppressingBladeCurrentCost);
-    $("#heavenlyCutlassCurrentCost").text(upgrades.heavenlyCutlassCurrentCost);
+    $("#autoAttackCurrentCost").text(upgrades.autoAttackCurrentCost.toFixed());
+    $("#suppressingBladeCurrentCost").text(upgrades.suppressingBladeCurrentCost.toFixed());
+    $("#heavenlyCutlassCurrentCost").text(upgrades.heavenlyCutlassCurrentCost.toFixed());
     
     
            
@@ -124,7 +131,7 @@ function update(){
             creep.currentHealth = creep.totalHealth;
             $("#creepHealth").text(parseFloat(Number(creep.currentHealth.toFixed(2))));
             $("#creepScore").text(player.creepScore);
-            $("#playerGold").text(player.currentGold);
+            $("#playerGold").text(player.currentGold.toFixed());
             
            
            
