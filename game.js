@@ -8,6 +8,7 @@ var document = document;
 var window = window;
 
 
+
 game.baseInterval = 1000;
 
 player.name = "Developer";
@@ -51,6 +52,7 @@ $(document).ready(function () {
     
             
     $("#attackCreep").click(function () {
+        $("#oof").play();
         
         if (creep.currentHealth > 0) {
             creep.currentHealth -= player.attackDamage;
