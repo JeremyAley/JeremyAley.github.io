@@ -3,14 +3,12 @@ var player = {};
 var creep = {};
 var upgrades = {};
 var healthPercentage = "10%";
-var setBar = document.querySelector(".bar");
-
+var $ = $;
+var document = document;
+var window = window;
 
 
 game.baseInterval = 1000;
-
-
-
 
 player.name = "Developer";
 player.creepScore = 0;
@@ -21,6 +19,7 @@ player.currentGold = 100;
 player.attackDamagePercentage = 1;
 player.attackDamageBase = 1;
 player.attackDamage = player.attackDamageBase * player.attackDamagePercentage;
+
 
 creep.totalHealth = 10;
 creep.currentHealth = 10;
@@ -36,52 +35,55 @@ upgrades.suppressingBladeDamageIncrease = 1;
 
 
 upgrades.heavenlyCutlassCurrentCost = 100;
-upgrades.heavenlyCutlassDamageIncrease = player.attackDamageBase*1.1;
+upgrades.heavenlyCutlassDamageIncrease = player.attackDamageBase * 1.1;
 
 
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     $("#playerName").text(player.name);
-    $(".sprite").mousedown(function(){
-       $(".sprite").attr("src", "assets/img/Mons2sad.png"); 
+    $(".sprite").mousedown(function () {
+        $(".sprite").attr("src", "assets/img/Mons2sad.png");
+    });
+    $(".sprite").mouseup(function () {
+        $(".sprite").attr("src", "assets/img/Mons%202.png");
     });
     
-    $(".sprite").mouseup(function(){
-       $(".sprite").attr("src", "assets/img/Mons%202.png"); 
-    });
-    
-    $("#attackCreep").click(function(){
-        if (creep.currentHealth >0) {
+            
+    $("#attackCreep").click(function () {
+        
+        if (creep.currentHealth > 0) {
             creep.currentHealth -= player.attackDamage;
             $("#creepHealth").text(parseFloat(Number(creep.currentHealth.toFixed(2))));
-            healthPercentage = creep.currentHealth / creep.totalHealth * 100 +"%";
+            healthPercentage = creep.currentHealth / creep.totalHealth * 100 + "%";
             document.querySelector("#bar").style.width = healthPercentage;
-                        }
+        }
             
         if (creep.currentHealth <= 0) {
-            player.creepScore ++;
-            player.currentGold ++;
+            player.creepScore++;
+            player.currentGold++;
             creep.currentHealth = creep.totalHealth;
-            $("#creepHealth").text(creep.currentHealth)
-            $("#creepScore").text(player.creepScore)
-            $("#playerGold").text(player.currentGold.toFixed())}
-            
-        });
+            $("#creepHealth").text(creep.currentHealth);
+            $("#creepScore").text(player.creepScore);
+            $("#playerGold").text(player.currentGold.toFixed());
+        }
+        $("#damageNumbers").innerHTML = player.attackDamage;
+    });
     
-    $("#buyAutoAttack").click(function(){
-        if (player.currentGold >= upgrades.autoAttackCurrentCost){
-        player.autoAttackCount ++;
-        player.autoAddInterval -=  0.2;
-        player.currentGold -= upgrades.autoAttackCurrentCost;
-        upgrades.autoAttackCurrentCost *= 1.5;
-        upgrades.autoAttackCount++}
+    $("#buyAutoAttack").click(function () {
+        if (player.currentGold >= upgrades.autoAttackCurrentCost) {
+            player.autoAttackCount++;
+            player.autoAddInterval -=  0.2;
+            player.currentGold -= upgrades.autoAttackCurrentCost;
+            upgrades.autoAttackCurrentCost *= 1.5;
+            upgrades.autoAttackCount++;
+        }
         $("#autoAttackCurrentCost").text(upgrades.autoAttackCurrentCost.toFixed());
     });
     
     
-    $("#buySuppressingBlade").click(function(){
-        if (player.currentGold >= upgrades.suppressingBladeCurrentCost){
+    $("#buySuppressingBlade").click(function () {
+        if (player.currentGold >= upgrades.suppressingBladeCurrentCost) {
             player.attackDamage += upgrades.suppressingBladeDamageIncrease;
             player.currentGold -= upgrades.suppressingBladeCurrentCost;
             upgrades.suppressingBladeCurrentCost = Math.round(upgrades.suppressingBladeCurrentCost.toFixed() * 1.5);
@@ -92,8 +94,8 @@ $(document).ready(function(){
     
     
     
-    $("#buyHeavenlyCutlass").click(function(){
-        if (player.currentGold >= upgrades.heavenlyCutlassCurrentCost){
+    $("#buyHeavenlyCutlass").click(function () {
+        if (player.currentGold >= upgrades.heavenlyCutlassCurrentCost) {
             player.attackDamageBase += upgrades.heavenlyCutlassDamageIncrease;
             player.currentGold -= upgrades.heavenlyCutlassCurrentCost;
             upgrades.heavenlyCutlassCurrentCost = Math.round(upgrades.heavenlyCutlassCurrentCost.toFixed() * 1.5);
@@ -103,19 +105,19 @@ $(document).ready(function(){
     });
     
     
-    window.setInterval(function(){
-           update();
-    },game.baseInterval);
+    window.setInterval(function () {
+        update();
+    }, game.baseInterval);
     
 });
 
-function update(){
+function update() {
    
-   creep.currentHealth += player.autoAddInterval;
-   $("#creepHealth").text(parseFloat(Number(creep.currentHealth.toFixed(2))));
-   $("#creepScore").text(player.creepScore);
-   $("#playerGold").text(player.currentGold.toFixed());
-    healthPercentage = creep.currentHealth / creep.totalHealth * 100 +"%";
+    creep.currentHealth += player.autoAddInterval;
+    $("#creepHealth").text(parseFloat(Number(creep.currentHealth.toFixed(2))));
+    $("#creepScore").text(player.creepScore);
+    $("#playerGold").text(player.currentGold.toFixed());
+    healthPercentage = creep.currentHealth / creep.totalHealth * 100 + "%";
     document.querySelector("#bar").style.width = healthPercentage;
     $("#autoAttackCurrentCost").text(upgrades.autoAttackCurrentCost.toFixed());
     $("#suppressingBladeCurrentCost").text(upgrades.suppressingBladeCurrentCost.toFixed());
@@ -125,18 +127,18 @@ function update(){
            
           
            
-       if (creep.currentHealth <= 0) {
-            player.creepScore ++;
-            player.currentGold ++;
-            creep.currentHealth = creep.totalHealth;
-            $("#creepHealth").text(parseFloat(Number(creep.currentHealth.toFixed(2))));
-            $("#creepScore").text(player.creepScore);
-            $("#playerGold").text(player.currentGold.toFixed());
+    if (creep.currentHealth <= 0) {
+        player.creepScore++;
+        player.currentGold++;
+        creep.currentHealth = creep.totalHealth;
+        $("#creepHealth").text(parseFloat(Number(creep.currentHealth.toFixed(2))));
+        $("#creepScore").text(player.creepScore);
+        $("#playerGold").text(player.currentGold.toFixed());
             
            
            
            
-       }
+    }
     
    
 }
