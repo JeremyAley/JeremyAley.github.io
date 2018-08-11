@@ -52,8 +52,7 @@ $(document).ready(function () {
     
             
     $("#attackCreep").click(function () {
-        $("#oof").play();
-        
+       
         if (creep.currentHealth > 0) {
             creep.currentHealth -= player.attackDamage;
             $("#creepHealth").text(parseFloat(Number(creep.currentHealth.toFixed(2))));
@@ -62,6 +61,8 @@ $(document).ready(function () {
         }
             
         if (creep.currentHealth <= 0) {
+            var audio = document.getElementById("audio");
+            audio.play();
             player.creepScore++;
             player.currentGold++;
             creep.currentHealth = creep.totalHealth;
